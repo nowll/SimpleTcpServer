@@ -5,6 +5,7 @@ import (
 	"main/handler"
 	"main/types"
 	"net"
+	"time"
 )
 
 func main() {
@@ -26,7 +27,12 @@ func main() {
 func handleClient(conn net.Conn) {
 	defer conn.Close()
 
+	timeoutDuration := 5 * time.Second
+
 	for {
+
+		conn.SetReadDeadline(time.Now().Add(timeoutDuration))
+
 		payload, err := types.Decode(conn)
 
 		handler.ErrorHandler(err)

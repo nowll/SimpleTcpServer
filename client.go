@@ -36,13 +36,13 @@ func main() {
 		case 1:
 
 			for {
-				fmt.Println("Send Message : ")
+				fmt.Println("Send Message (Minimum 6 Character) : ")
 				sc.Scan()
 				text = sc.Text()
-				if len(text) > 4 {
+				if len(text) > 6 {
 					break
 				} else {
-					fmt.Println("Char not long enough")
+					fmt.Println("Character is not long enough.")
 				}
 
 			}
